@@ -2,12 +2,12 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-# Get default VPC
+# Default VPC
 data "aws_vpc" "default" {
   default = true
 }
 
-# Get default public subnet
+# Default Subnets
 data "aws_subnets" "default_subnets" {
   filter {
     name   = "vpc-id"
@@ -15,7 +15,7 @@ data "aws_subnets" "default_subnets" {
   }
 }
 
-# Get latest Amazon Linux 2 AMI
+# Latest Amazon Linux 2023 AMI
 data "aws_ami" "amazon_linux" {
   most_recent = true
 
@@ -23,7 +23,7 @@ data "aws_ami" "amazon_linux" {
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+    values = ["al2023-ami-*-x86_64"]
   }
 }
 
